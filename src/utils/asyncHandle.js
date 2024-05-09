@@ -7,7 +7,7 @@ const asyncHandler=(requstHadler)=>{
 export {asyncHandler}
 
 
-
+// or
 
 // const asyncHandler =(fn)=>async(req,rse,next)=>{
 // try {
