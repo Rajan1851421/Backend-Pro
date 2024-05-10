@@ -1,6 +1,9 @@
-// require('dotenv').config()
 import dotenv from "dotenv";
+import express from 'express';
 import connectDB from "./db/index.js";
+
+// Initialize Express app
+const app = express();
 
 dotenv.config({
   path: "/.env",
@@ -9,30 +12,9 @@ dotenv.config({
 connectDB()
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
-      console.log(`SERVER VIS RUNNIG O PORT ${process.env.PORT}`);
+      console.log(`SERVER IS RUNNING ON PORT ${process.env.PORT || 8000}`);
     });
   })
   .catch((error) => {
-    console.log("MONGO DB CONECTION FAILED ", error);
+    console.log("MONGODB CONNECTION FAILED ", error);
   });
-
-/*
-
-import express from 'express'
-const app = express()
-
-;(async () => {
-    try {
-       await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)    
-       app.on("error",(error)=>{
-        console.log("Some error for tailking",error);
-        throw error
-       })    
-       app.listen(process.env.PORT,()=>{
-        console.log(`App is listining on ${process.env.PORT}` );
-       })
-    } catch (error) {
-        console.log("error",error);
-    }
-})();
-*/
